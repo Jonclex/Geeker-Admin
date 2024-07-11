@@ -9,7 +9,7 @@ export const useGlobalStore = defineStore({
   state: (): GlobalState => ({
     // 布局模式 (纵向：vertical | 经典：classic | 横向：transverse | 分栏：columns)
     layout: "vertical",
-    // element 组件大小
+    // element 组件大小 'large' | 'default' | 'small'
     assemblySize: "default",
     // 当前系统语言
     language: null,
@@ -34,13 +34,13 @@ export const useGlobalStore = defineStore({
     // 页面水印
     watermark: false,
     // 面包屑导航
-    breadcrumb: true,
+    breadcrumb: false,
     // 面包屑导航图标
-    breadcrumbIcon: true,
+    breadcrumbIcon: false,
     // 标签页
     tabs: true,
     // 标签页图标
-    tabsIcon: true,
+    tabsIcon: false,
     // 页脚
     footer: true
   }),

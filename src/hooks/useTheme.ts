@@ -7,6 +7,7 @@ import { getLightColor, getDarkColor } from "@/utils/color";
 import { menuTheme } from "@/styles/theme/menu";
 import { asideTheme } from "@/styles/theme/aside";
 import { headerTheme } from "@/styles/theme/header";
+import { globalTheme } from "@/styles/theme/global";
 
 /**
  * @description 全局主题 hooks
@@ -23,6 +24,7 @@ export const useTheme = () => {
     changePrimary(primary.value);
     setAsideTheme();
     setHeaderTheme();
+    setGlobalTheme();
   };
 
   // 修改主题颜色
@@ -87,6 +89,17 @@ export const useTheme = () => {
     if (headerInverted.value) type = "inverted";
     if (isDark.value) type = "dark";
     const theme = headerTheme[type!];
+    for (const [key, value] of Object.entries(theme)) {
+      document.documentElement.style.setProperty(key, value);
+    }
+    setMenuTheme();
+  };
+  // 设置头部样式
+  const setGlobalTheme = () => {
+    let type: Theme.ThemeType = "light";
+    if (headerInverted.value) type = "inverted";
+    if (isDark.value) type = "dark";
+    const theme = globalTheme[type!];
     for (const [key, value] of Object.entries(theme)) {
       document.documentElement.style.setProperty(key, value);
     }
