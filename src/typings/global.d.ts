@@ -3,10 +3,29 @@ declare namespace Menu {
   interface MenuOptions {
     path: string;
     name: string;
+    icon: string;
     component?: string | (() => Promise<unknown>);
     redirect?: string;
     meta: MetaProps;
     children?: MenuOptions[];
+    menuId: string;
+    parentId?: string;
+    menuName: string;
+    menuType?: DictDataIdType;
+    formRouterName?: string;
+    showOrder: number;
+    createTime: string;
+    createUserId: string;
+    updateTime: string;
+    updateUserId: string;
+    extraData?: string;
+    bindType: number;
+    onlineFormId?: string;
+    onlineFlowEntryId?: string;
+    reportPageId?: string;
+    targetUrl?: string;
+    deletedFlag: number;
+    permCodeIdList: Array;
   }
   interface MetaProps {
     icon: string;
@@ -18,6 +37,10 @@ declare namespace Menu {
     isAffix: boolean;
     isKeepAlive: boolean;
   }
+}
+declare interface MenuItem {
+  menuList: Menu.MenuOptions[];
+  permCodeList: [];
 }
 
 /* FileType */
