@@ -9,7 +9,7 @@
         <div class="split-list">
           <div
             v-for="item in menuList"
-            :key="item.path"
+            :key="item.menuId.toString()"
             class="split-item"
             :class="{ 'split-active': splitActive === item.path || `/${splitActive.split('/')[1]}` === item.path }"
             @click="changeSubMenu(item)"
@@ -99,5 +99,5 @@ const changeSubMenu = (item: Menu.MenuOptions) => {
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import "./index";
 </style>

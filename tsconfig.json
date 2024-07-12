@@ -36,7 +36,8 @@
     "src/**/*.vue",
     "build/**/*.ts",
     "build/**/*.d.ts",
-    "vite.config.ts"
+    "vite.config.ts",
+    "node_modules/preact/src/internal.d.ts"
   ],
   "exclude": ["node_modules", "dist", "**/*.js"]
 }

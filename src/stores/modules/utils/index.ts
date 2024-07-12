@@ -1,4 +1,5 @@
 import { SysMenuBindType } from "@/utils/dict";
+import { UserInfo } from "@/types/upms/user";
 function processMenu(item: Menu.MenuOptions): void {
   if (item == null) return;
   if (item.extraData != null && item.extraData !== "") {
@@ -95,4 +96,24 @@ function findMenuItem(menuItem: Menu.MenuOptions, menuId: string, path: Menu.Men
   return findItem;
 }
 
-export { processMenu, findMenuItem, findMenuItemById };
+function initUserInfo(userInfo: UserInfo) {
+  if (userInfo != null && userInfo.headImageUrl != null && userInfo.headImageUrl !== "") {
+    try {
+      userInfo.headImageUrl = JSON.parse(userInfo.headImageUrl);
+      if (Array.isArray(userInfo.headImageUrl)) {
+        userInfo.headImageUrl = userInfo.headImageUrl[0];
+      } else {
+        userInfo.headImageUrl = null;
+      }
+    } catch (e) {
+      console.error("解析头像数据失败！", e);
+      userInfo.headImageUrl = null;
+    }
+  } else {
+    if (userInfo) userInfo.headImageUrl = null;
+  }
+
+  return userInfo;
+}
+
+export { processMenu, findMenuItem, initUserInfo, findMenuItemById };
