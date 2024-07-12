@@ -2,7 +2,6 @@ import { isArray } from "@/utils/is";
 import { FieldNamesProps } from "@/components/ProTable/interface";
 import { JSEncrypt } from "jsencrypt";
 import dayjs from "dayjs";
-import { Menu } from "@/typings/global";
 
 const mode = import.meta.env.VITE_ROUTER_MODE;
 
@@ -561,12 +560,12 @@ export function setObjectToSessionStorage(key: string, value: any) {
  * @param {*} defaultValue 默认值
  */
 export function getObjectFromSessionStorage(key: string, defaultValue: any): any {
-  let jsonObj = null;
+  let jsonObj = {};
   try {
     const val: string | null = sessionStorage.getItem(key);
     if (val == null) return defaultValue;
     jsonObj = JSON.parse(val);
-    jsonObj = (jsonObj || {}).data;
+    jsonObj = (jsonObj || {})["data"];
   } catch (e) {
     jsonObj = defaultValue;
   }

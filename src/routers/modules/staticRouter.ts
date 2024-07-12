@@ -7,7 +7,17 @@ import { HOME_URL, LOGIN_URL } from "@/config";
 export const staticRouter: RouteRecordRaw[] = [
   {
     path: "/",
-    redirect: HOME_URL
+    component: () => import("@/layouts/index.vue"),
+    // component: () => import("@/layouts/indexAsync.vue"),
+    redirect: HOME_URL,
+    children: [
+      {
+        path: HOME_URL,
+        name: "home",
+        component: () => import("@/views/home/index.vue"),
+        meta: { icon: "HomeFilled", title: "首页", isLink: "", isHide: false, isFull: false, isAffix: true, isKeepAlive: true }
+      }
+    ]
   },
   {
     path: LOGIN_URL,

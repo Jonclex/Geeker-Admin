@@ -12,7 +12,7 @@ function processMenu(item: Menu.MenuOptions): void {
     item.targetUrl = extraData.targetUrl;
   }
   item.path = item.formRouterName || "";
-  item.name = item.formRouterName || "";
+  item.name = item.formRouterName || item.menuName;
   item.meta = {
     title: item.menuName,
     icon: item.icon,
